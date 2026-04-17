@@ -1,0 +1,15 @@
+{
+  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+  "dest": "../../dist/skedapt",
+  "assets": [
+    {
+      "glob": "skedapt.styles.scss",
+      "input": "src/lib",
+      "output": "."
+    }
+  ],
+  "lib": {
+    "entryFile": "src/lib/public-api.ts",
+    "styleIncludePaths": ["src/lib"]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "skedapt",
+  "version": "0.0.1",
+  "description": "An Angular adaptive skeleton loader directive that mirrors host element dimensions and applies shimmer loading styles.",
+  "keywords": [
+    "angular",
+    "skeleton-loader",
+    "loading",
+    "directive",
+    "scss",
+    "ui"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/z4k7/skedapt.git"
+  },
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false,
+  "exports": {
+    "./styles": {
+      "sass": "./skedapt.styles.scss",
+      "default": "./skedapt.styles.scss"
+    }
+  }
+}

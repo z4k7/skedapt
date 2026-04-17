@@ -1,0 +1,26 @@
+.sk-skeleton {
+  position: relative;
+  overflow: hidden;
+  background: var(--sk-skeleton-bg, #f6f3f3);
+  border-radius: inherit !important;
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(255, 255, 255, 0.65),
+      transparent
+    );
+    animation: skShimmer 1.2s linear infinite;
+    transform: translateX(-100%);
+  }
+
+  @keyframes skShimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+}
