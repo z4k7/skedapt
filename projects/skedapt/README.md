@@ -1,6 +1,10 @@
 # Skedapt
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+`skedapt` is an adaptive skeleton loader directive for Angular applications.
+
+## Compatibility
+
+This package is intended for Angular `16` through `20`.
 
 ## Code scaffolding
 
