@@ -1,6 +1,7 @@
 [data-skedapt-host].skedapt-loading {
   color: transparent !important;
   position: relative;
+  border-radius: var(--skedapt-radius, 10px);
 }
 
 [data-skedapt-host].skedapt-loading::before,
@@ -8,11 +9,11 @@
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+  border-radius: var(--skedapt-radius, inherit);
 }
 
 [data-skedapt-host].skedapt-loading::before {
-  background: var(--skedapt-surface, #edf1f5);
+  background: var(--skedapt-surface, #d9e6f4);
   z-index: 1;
 }
 
@@ -20,9 +21,9 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(255, 255, 255, 0.65) 50%,
-    rgba(255, 255, 255, 0.08) 80%,
+    color-mix(in srgb, var(--skedapt-highlight, rgba(255, 255, 255, 0.5)) 15%, transparent) 20%,
+    var(--skedapt-highlight, rgba(255, 255, 255, 0.5)) 50%,
+    color-mix(in srgb, var(--skedapt-highlight, rgba(255, 255, 255, 0.5)) 15%, transparent) 80%,
     transparent 100%
   );
   transform: translateX(-100%);

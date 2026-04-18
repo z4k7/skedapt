@@ -54,6 +54,37 @@ This replaces patterns like:
 - Existing content stays in place, which keeps the parent size stable during loading.
 - `skeDapt` still works as a legacy alias, but `skedapt` is the preferred API going forward.
 
+## Theme Variables
+
+`skedapt` exposes its own CSS variables so consumers can theme the skeleton globally without relying on app-specific tokens:
+
+- `--skedapt-surface`
+- `--skedapt-highlight`
+- `--skedapt-radius`
+
+Default fallbacks:
+
+- `--skedapt-surface: #d9e6f4`
+- `--skedapt-highlight: rgba(255, 255, 255, 0.5)`
+- `--skedapt-radius: 10px`
+
+Example global setup:
+
+```scss
+:root {
+  --skedapt-surface: #d9e6f4;
+  --skedapt-highlight: rgba(255, 255, 255, 0.5);
+  --skedapt-radius: 10px;
+}
+
+.dark-theme {
+  --skedapt-surface: #1f3a40;
+  --skedapt-highlight: rgba(255, 255, 255, 0.18);
+}
+```
+
+When the app switches theme classes, the skeleton colors switch automatically too.
+
 ## Optional Legacy Style Export
 
 `skedapt/styles` is still published for compatibility, but importing it is optional.

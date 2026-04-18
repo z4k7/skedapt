@@ -1,6 +1,6 @@
 {
   "name": "skedapt",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "description": "A zero-config Angular adaptive skeleton loader directive that decorates the real host element and auto-injects shimmer styles.",
   "keywords": [
     "angular",

@@ -15,10 +15,14 @@ import {
 const SKEDAPT_STYLE_ID = 'skedapt-runtime-styles';
 const SKEDAPT_HOST_ATTR = 'data-skedapt-host';
 const SKEDAPT_LOADING_CLASS = 'skedapt-loading';
+const SKEDAPT_DEFAULT_SURFACE = '#d9e6f4';
+const SKEDAPT_DEFAULT_HIGHLIGHT = 'rgba(255, 255, 255, 0.5)';
+const SKEDAPT_DEFAULT_RADIUS = '10px';
 const SKEDAPT_RUNTIME_STYLES = `
 [${SKEDAPT_HOST_ATTR}].${SKEDAPT_LOADING_CLASS} {
   color: transparent !important;
   position: relative;
+  border-radius: var(--skedapt-radius, ${SKEDAPT_DEFAULT_RADIUS});
 }
 
 [${SKEDAPT_HOST_ATTR}].${SKEDAPT_LOADING_CLASS}::before,
@@ -26,11 +30,11 @@ const SKEDAPT_RUNTIME_STYLES = `
   content: "";
   position: absolute;
   inset: 0;
-  border-radius: inherit;
+  border-radius: var(--skedapt-radius, inherit);
 }
 
 [${SKEDAPT_HOST_ATTR}].${SKEDAPT_LOADING_CLASS}::before {
-  background: var(--skedapt-surface, #edf1f5);
+  background: var(--skedapt-surface, ${SKEDAPT_DEFAULT_SURFACE});
   z-index: 1;
 }
 
@@ -38,9 +42,9 @@ const SKEDAPT_RUNTIME_STYLES = `
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.08) 20%,
-    rgba(255, 255, 255, 0.65) 50%,
-    rgba(255, 255, 255, 0.08) 80%,
+    color-mix(in srgb, var(--skedapt-highlight, ${SKEDAPT_DEFAULT_HIGHLIGHT}) 15%, transparent) 20%,
+    var(--skedapt-highlight, ${SKEDAPT_DEFAULT_HIGHLIGHT}) 50%,
+    color-mix(in srgb, var(--skedapt-highlight, ${SKEDAPT_DEFAULT_HIGHLIGHT}) 15%, transparent) 80%,
     transparent 100%
   );
   transform: translateX(-100%);
