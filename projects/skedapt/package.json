@@ -1,13 +1,13 @@
 {
   "name": "skedapt",
-  "version": "0.0.2",
-  "description": "An Angular adaptive skeleton loader directive that mirrors host element dimensions and applies shimmer loading styles.",
+  "version": "0.0.3",
+  "description": "A zero-config Angular adaptive skeleton loader directive that decorates the real host element and auto-injects shimmer styles.",
   "keywords": [
     "angular",
     "skeleton-loader",
     "loading",
     "directive",
-    "scss",
+    "zero-config",
     "ui"
   ],
   "license": "MIT",

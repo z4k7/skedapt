@@ -1,83 +1,78 @@
 # Skedapt
 
-`skedapt` is an adaptive skeleton loader directive for Angular applications.
+`skedapt` is a zero-config adaptive skeleton loader for Angular.
+
+It decorates the real host element instead of asking you to manually calculate height and width, so the skeleton naturally follows the container's own layout.
 
 ## Compatibility
 
-This package is intended for Angular `16` through `20`.
+Angular `16` through `20`.
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Install
 
 ```bash
-ng generate component component-name
+npm install skedapt
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+No global stylesheet import is required.
 
-```bash
-ng generate --help
-```
+## Usage
 
-## Building
-
-To build the library, run:
-
-```bash
-ng build skedapt
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-## Using The Styles
-
-The skeleton shimmer styles are published as a separate SCSS asset with the package.
-
-Import them once in your app's global stylesheet:
-
-```scss
-@use 'skedapt/styles';
-```
-
-Then import the directive where you want to use it:
+Import the standalone directive:
 
 ```ts
 import { SkeDaptDirective } from 'skedapt';
 ```
 
-### Publishing the Library
+Then apply it on the same element that would normally receive your loading class:
 
-Once the project is built, you can publish your library by following these steps:
+```html
+<div
+  class="flex flex-col gap-1 border-r border-common-border-color px-4 py-4"
+  [skedapt]="payeeSummaryLoading"
+>
+  <span class="font-700 text-[10px] uppercase tracking-widest text-common-secondary-font-color">
+    This Month
+  </span>
+  <span class="text-lg font-extrabold leading-tight text-common-primary-font-color">
+    {{ payeeSummary?.total_paid_in_month | currency }}
+  </span>
+</div>
+```
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/skedapt
-   ```
+This replaces patterns like:
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
+```html
+[ngClass]="payeeSummaryLoading ? 'skelton_loader' : ''"
+```
 
-## Running unit tests
+## Behavior
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+- No `@use 'skedapt/styles';` setup is needed.
+- The shimmer styles are injected automatically when the directive is used.
+- The skeleton overlays the actual host element, so it adapts to padding, border radius, and live layout changes.
+- Existing content stays in place, which keeps the parent size stable during loading.
+- `skeDapt` still works as a legacy alias, but `skedapt` is the preferred API going forward.
+
+## Optional Legacy Style Export
+
+`skedapt/styles` is still published for compatibility, but importing it is optional.
+
+## Build
+
+```bash
+ng build skedapt
+```
+
+## Publish
+
+```bash
+cd dist/skedapt
+npm publish
+```
+
+## Test
 
 ```bash
 ng test
 ```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
